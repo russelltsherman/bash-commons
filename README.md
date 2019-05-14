@@ -33,6 +33,10 @@ Here's an overview of the modules available in `bash-commons`:
 * `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (INFO, WARN, ERROR) and
   timestamps.
 
+* `string.sh`: A collection of string manipulation functions, such as checking if a string contains specific text,
+  stripping prefixes, and stripping suffixes.
+
+
 ## Testing
 
 Every function should be tested:
