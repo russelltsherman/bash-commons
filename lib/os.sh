@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-# shellcheck source=./lib/log.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/log.sh"
+LIBDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# shellcheck source=./log.sh
+source "${LIBDIR}/log.sh"
 
 # Return the available memory on the current OS in MB
 function os_get_available_memory_mb {

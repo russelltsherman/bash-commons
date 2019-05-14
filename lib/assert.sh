@@ -2,14 +2,16 @@
 # A collection of useful assertions. Each one checks a condition and if the condition is not satisfied, exits the
 # program. This is useful for defensive programming.
 
-# shellcheck source=./lib/log.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/log.sh"
-# shellcheck source=./lib/array.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/array.sh"
-# shellcheck source=./lib/string.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/string.sh"
-# shellcheck source=./lib/os.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/os.sh"
+LIBDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# shellcheck source=./log.sh
+source "${LIBDIR}/log.sh"
+# shellcheck source=./array.sh
+source "${LIBDIR}/array.sh"
+# shellcheck source=./string.sh
+source "${LIBDIR}/string.sh"
+# shellcheck source=./os.sh
+source "${LIBDIR}/os.sh"
 
 # Check that the given binary is available on the PATH. If it's not, exit with an error.
 function assert_is_installed {
@@ -64,6 +66,7 @@ function assert_value_in_list {
   shift 2
   local -ar list=("$@")
 
+  # shellcheck disable=SC2145
   if ! array_contains "$arg_value" "${list[@]}"; then
     log_error "'$arg_value' is not a valid value for $arg_name. Must be one of: [${list[@]}]."
     exit 1

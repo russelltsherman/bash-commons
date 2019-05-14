@@ -3,10 +3,12 @@
 # (a) it's more convenient to fetch specific info you need, such as an EC2 Instance's private IP and (b) so you can
 # replace these helpers with mocks to do local testing or unit testing.
 
-# shellcheck source=./lib/assert.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/assert.sh"
-# shellcheck source=./lib/log.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/log.sh"
+LIBDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# shellcheck source=./assert.sh
+source "${LIBDIR}/assert.sh"
+# shellcheck source=./log.sh
+source "${LIBDIR}/log.sh"
 
 # Look up the given path in the EC2 Instance metadata endpoint
 function aws_lookup_path_in_instance_metadata {

@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # A collection of functions for working with files.
 
-# shellcheck source=./lib/os.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/os.sh"
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/string.sh"
+LIBDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# shellcheck source=./os.sh
+source "${LIBDIR}/os.sh"
+# shellcheck source=./string.sh
+source "${LIBDIR}/string.sh"
 
 # Returns true (0) if the given file exists and is a file and false (1) otherwise
 function file_exists {

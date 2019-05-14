@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-# shellcheck source=./lib/os.sh
-source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../lib/bootstrap.sh"
+LIBDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# shellcheck source=./../lib/bashopts.sh
+source "${LIBDIR}/../lib/bashopts.sh"
 
 function run_shellcheck {
   local -r format="${1}"
