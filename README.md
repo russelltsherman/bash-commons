@@ -33,6 +33,18 @@ Here's an overview of the modules available in `bash-commons`:
 * `assert.sh`: Assertions that check a condition and exit if the condition is not met, such as asserting a variable is
   not empty or that an expected app is installed. Useful for defensive programming.
 
+* `aws.sh`: A collection of thin wrappers for direct calls to the [AWS CLI](https://aws.amazon.com/cli/) and [EC2
+  Instance Metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html). These thin
+  wrappers give you a shorthand way to fetch certain information (e.g., information about an EC2 Instance, such as its
+  private IP, public IP, Instance ID, and region). Moreover, you can swap out `aws.sh` with a version that returns mock
+  data to make it easy to run your code locally (e.g., in Docker) and to run unit tests.
+
+* `aws-wrapper.sh`: A collection of "high level" wrappers for the [AWS CLI](https://aws.amazon.com/cli/) and [EC2
+  Instance Metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) to simplify common
+  tasks such as looking up tags or IPs for EC2 Instances. Note that these wrappers handle all the data processing and
+  logic, whereas all the direct calls to the AWS CLI and EC2 metadata endpoints are delegated to `aws.sh` to make unit
+  testing easier.
+
 * `file.sh`: A collection of helpers for working with files, such as checking if a file exists or contains certain text.
 
 * `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (INFO, WARN, ERROR) and
