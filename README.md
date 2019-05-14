@@ -21,6 +21,8 @@ This will make all the functions within that module available in your code:
 
 ```bash
 log_info "Hello, World!"
+log_notice "something is happening"
+log_debug "debugging information"
 ```
 
 ## Available modules
@@ -49,7 +51,7 @@ Here's an overview of the modules available in `bash-commons`:
 
 * `file.sh`: A collection of helpers for working with files, such as checking if a file exists or contains certain text.
 
-* `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (INFO, WARN, ERROR) and
+* `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (DEBUG, INFO, NOTICE, WARNING, ERROR, FATAL) and
   timestamps.
 
 * `os.sh`: A collection of Operating System helpers, such as checking which flavor of Linux (e.g., Ubuntu, CentOS) is
@@ -128,7 +130,7 @@ Every function should be tested:
   `docker-compose up`.
 
 * To run one test file: 
-  `docker-compose run tests bats test/array.bats`.
+  `docker-compose run bats bats test/log.bats`.
 
 * To leave the Docker container running so you can debug, explore, and interactively run bats: 
-  `docker-compose run tests bash`.
+  `docker-compose run bats bats`.
