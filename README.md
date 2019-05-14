@@ -56,6 +56,58 @@ Here's an overview of the modules available in `bash-commons`:
 * `string.sh`: A collection of string manipulation functions, such as checking if a string contains specific text,
   stripping prefixes, and stripping suffixes.
 
+## Coding Conventions
+
+The code in `bash-commons` follows the following principles:
+
+1. [Compatibility](#compatibility)
+1. [Code style](#code-style)
+1. [Everything is a function](#everything-is-a-function)
+1. [Namespacing](#namespacing)
+1. [Testing](#testing)
+
+### Compatibility
+
+The code in this repo aims to be compatible with:
+
+* Bash 3
+* Most major Linux distributions (e.g., Ubuntu, CentOS)
+
+### Code style
+
+All the code should mainly follow the [Google Shell Style Guide](https://google.github.io/styleguide/shell.xml).
+In particular:
+
+* The first line of every script should be `#!/usr/bin/env bash`.
+* All code should be defined in functions.
+* Functions should exit or return 0 on success and non-zero on error.
+* Functions should return output by writing it to `stdout`.
+* Functions should log to `stderr`.
+* All variables should be `local`. No global variables are allowed at all.
+* Make as many variables `readonly` as possible.
+* If a variable is both local and readonly, use `local -r`. 
+* If calling to a subshell and storing the output in a variable (foo=`$( ... )`), do NOT use `local -r`  in the same
+  statement or the [exit code will be lost](https://blog.gruntwork.io/yak-shaving-series-1-all-i-need-is-a-little-bit-of-disk-space-6e5ef1644f67).
+  Instead, declare the variable as `local` on one line and then call the subshell on the next line.
+* Quote all strings.
+* Use `[[ ... ]]` instead of `[ ... ]`.
+* Use snake_case for function and variable names. Use UPPER_SNAKE_CASE for constants.
+
+### Everything in a function
+
+It's essential that ALL code is defined in a function. That allows you to use `source` to "import" that code without
+anything actually being executed.
+
+### Namespacing
+
+Bash does not support namespacing, so we fake it using a convention on the function names: if you create a file
+`<foo.sh>`, all functions in it should start with `foo_`. For example, all the functions in `log.sh` start with `log_`
+(`log_info`, `log_error`) and all the functions in `string.sh` start with `string_` (`string_contains`,
+`string_strip_prefix`). That makes it easier to tell which functions came from which modules.
+
+For readability, that means you should typically give files a name that is a singular noun. For example, `log.sh`
+instead of `logging.sh` and `string.sh` instead of `strings.sh`.
+
 ## Testing
 
 Every function should be tested:
