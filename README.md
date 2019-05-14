@@ -45,6 +45,8 @@ Here's an overview of the modules available in `bash-commons`:
   logic, whereas all the direct calls to the AWS CLI and EC2 metadata endpoints are delegated to `aws.sh` to make unit
   testing easier.
 
+* `bashopts.sh`: set sensible default options to encourage well formed scripts.
+
 * `file.sh`: A collection of helpers for working with files, such as checking if a file exists or contains certain text.
 
 * `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (INFO, WARN, ERROR) and
