@@ -3,6 +3,33 @@
 This repo contains a collection of Bash functions for handling common tasks
 such as logging, assertions, string manipulation, and more.
 
+## Install
+
+```bash
+git clone https://github.com/unionpos/bash-commons.git /opt/union
+```
+
+## Importing modules
+
+You can use the `source` command to "import" the modules you need and use them in your script:
+
+```bash
+source /opt/union/bash-commons/lib/log.sh
+```
+
+This will make all the functions within that module available in your code:
+
+```bash
+log_info "Hello, World!"
+```
+
+## Available modules
+
+Here's an overview of the modules available in `bash-commons`:
+
+* `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (INFO, WARN, ERROR) and
+  timestamps.
+
 ## Testing
 
 Every function should be tested:
