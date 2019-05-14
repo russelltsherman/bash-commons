@@ -33,6 +33,8 @@ Here's an overview of the modules available in `bash-commons`:
 * `assert.sh`: Assertions that check a condition and exit if the condition is not met, such as asserting a variable is
   not empty or that an expected app is installed. Useful for defensive programming.
 
+* `file.sh`: A collection of helpers for working with files, such as checking if a file exists or contains certain text.
+
 * `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (INFO, WARN, ERROR) and
   timestamps.
 
