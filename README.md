@@ -36,9 +36,11 @@ Here's an overview of the modules available in `bash-commons`:
 * `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (INFO, WARN, ERROR) and
   timestamps.
 
+* `os.sh`: A collection of Operating System helpers, such as checking which flavor of Linux (e.g., Ubuntu, CentOS) is
+  running and validating checksums.
+
 * `string.sh`: A collection of string manipulation functions, such as checking if a string contains specific text,
   stripping prefixes, and stripping suffixes.
-
 
 ## Testing
 
