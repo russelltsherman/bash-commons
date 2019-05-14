@@ -27,6 +27,9 @@ log_info "Hello, World!"
 
 Here's an overview of the modules available in `bash-commons`:
 
+* `array.sh`: Helpers for working with Bash arrays, such as checking if an array contains an element, or joining an
+  array into a string with a delimiter between elements.
+
 * `log.sh`: A collection of logging helpers that write logs to `stderr` with log levels (INFO, WARN, ERROR) and
   timestamps.
 
