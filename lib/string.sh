@@ -26,7 +26,6 @@ function string_to_uppercase {
 # Strip the prefix from the given string. Supports wildcards.
 #
 # Example:
-#
 # string_strip_prefix "foo=bar" "foo="  ===> "bar"
 # string_strip_prefix "foo=bar" "*="    ===> "bar"
 #
@@ -40,7 +39,6 @@ function string_strip_prefix {
 # Strip the suffix from the given string. Supports wildcards.
 #
 # Example:
-#
 # string_strip_suffix "foo=bar" "=bar"  ===> "foo"
 # string_strip_suffix "foo=bar" "=*"    ===> "foo"
 #

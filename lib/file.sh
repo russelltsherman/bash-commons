@@ -85,6 +85,7 @@ function file_fill_template {
   shift 1
   local -ar auto_fill=("$@")
 
+  # shellcheck disable=SC2199
   if [[ -z "${auto_fill[@]}" ]]; then
     log_info "No auto-fill params specified."
     return
