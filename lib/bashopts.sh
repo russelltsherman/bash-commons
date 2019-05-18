@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+LIBDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# shellcheck source=./ui.sh
+source "${LIBDIR}/ui.sh"
+
 # Sets some Bash options to encourage well formed code.
 # For example, some of the options here will cause the script to terminate as
 # soon as a command fails. Another option will cause an error if an undefined
@@ -30,3 +35,5 @@ set -o pipefail
 # Make debugging easier when you use `set -x`
 # See: http://wiki.bash-hackers.org/scripting/debuggingtips#making_xtrace_more_useful
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+
+[[ -n ${DEBUG:-} ]] && ui_bot "Enabling debug mode" && set -x
