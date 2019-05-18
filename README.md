@@ -6,7 +6,7 @@ such as logging, assertions, string manipulation, and more.
 ## Install
 
 ```bash
-git clone https://github.com/unionpos/bash-commons.git /opt/union
+git clone https://github.com/russellatuniondashpos/bash-commons.git /opt/union
 ```
 
 ## Importing modules
@@ -89,7 +89,7 @@ In particular:
 * Functions should log to `stderr`.
 * All variables should be `local`. No global variables are allowed at all.
 * Make as many variables `readonly` as possible.
-* If a variable is both local and readonly, use `local -r`. 
+* If a variable is both local and readonly, use `local -r`.
 * If calling to a subshell and storing the output in a variable (foo=`$( ... )`), do NOT use `local -r`  in the same
   statement or the [exit code will be lost](https://blog.gruntwork.io/yak-shaving-series-1-all-i-need-is-a-little-bit-of-disk-space-6e5ef1644f67).
   Instead, declare the variable as `local` on one line and then call the subshell on the next line.
@@ -118,19 +118,19 @@ Every function should be tested:
 
 * Automated tests are in the [test](/test) folder.
 
-* We use [Bats](https://github.com/sstephenson/bats) as our unit test framework for Bash code. 
-  
+* We use [Bats](https://github.com/sstephenson/bats) as our unit test framework for Bash code.
+
   Note: Bats is not well maintained, consider switching to the [bats-core](https://github.com/bats-core/bats-core)
   fork at some point (see [#150](https://github.com/sstephenson/bats/issues/150)).
 
 * To build/rebuild the containers for testing
   `docker-compose build`
 
-* To run all the tests: 
+* To run all the tests:
   `docker-compose up`.
 
-* To run one test file: 
+* To run one test file:
   `docker-compose run bats bats test/log.bats`.
 
-* To leave the Docker container running so you can debug, explore, and interactively run bats: 
+* To leave the Docker container running so you can debug, explore, and interactively run bats:
   `docker-compose run bats bats`.
