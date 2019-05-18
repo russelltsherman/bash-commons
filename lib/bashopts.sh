@@ -37,3 +37,27 @@ set -o pipefail
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 [[ -n ${DEBUG:-} ]] && ui_bot "Enabling debug mode" && set -x
+
+# trap ctrl-c and call ctrl_c()
+trap on_interrupt INT
+trap on_error ERR
+trap on_exit EXIT
+
+function on_interrupt() {
+  ui_bot "Buh Bye.."
+  exit 0
+}
+
+function on_error() {
+  ui_error "*** Something went wrong ***"
+  local frame=0
+  while caller $frame; do
+    ((frame++));
+  done
+  echo "$*"
+  exit 1
+}
+
+function on_exit() {
+  echo ""
+}
